@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid">
+    <div class="card">
+        <h2>环境参数输入</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {% for field in form if field.name != 'csrf_token' and field.name != 'submit' %}
+                <div class="form-group">
+                    {{ field.label }}
+                    {{ field(class="form-control") }}
+                    {% for error in field.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            {{ form.submit(class="btn") }}
+        </form>
+    </div>
+    <div class="card">
+        <h2>专业钓鱼建议</h2>
+        {% if advice %}
+            <div class="tabs">
+                <div class="tab-header">
+                    <button class="tab-button active" onclick="openTab(event, 'reasoning')">环境分析</button>
+                    <button class="tab-button" onclick="openTab(event, 'equipment')">装备优化</button>
+                    <button class="tab-button" onclick="openTab(event, 'lure')">拟饵策略</button>
+                    <button class="tab-button" onclick="openTab(event, 'tactical')">战术要点</button>
+                    <button class="tab-button" onclick="openTab(event, 'timing')">时段计划</button>
+                    <button class="tab-button" onclick="openTab(event, 'advanced')">进阶技巧</button>
+                    <button class="tab-button" onclick="openTab(event, 'contingency')">应急预案</button>
+                    <button class="tab-button" onclick="openTab(event, 'summary')">综合总结</button>
+                </div>
+                <div id="reasoning" class="tab-content active">
+                    <h3>环境分析与思维推理</h3>
+                    <div class="reasoning-box">
+                        {% if advice.reasoning is string %}
+                            <p>{{ advice.reasoning }}</p>
+                        {% else %}
+                            {% for key, value in advice.reasoning.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="equipment" class="tab-content">
+                    <h3>装备优化建议</h3>
+                    <div class="content-box">
+                        {% if advice.equipmentOptimization is string %}
+                            <p>{{ advice.equipmentOptimization }}</p>
+                        {% else %}
+                            {% for key, value in advice.equipmentOptimization.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="lure" class="tab-content">
+                    <h3>拟饵策略</h3>
+                    <div class="content-box">
+                        {% if advice.lureStrategy is string %}
+                            <p>{{ advice.lureStrategy }}</p>
+                        {% else %}
+                            {% for key, value in advice.lureStrategy.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="tactical" class="tab-content">
+                    <h3>战术执行要点</h3>
+                    <div class="content-box">
+                        {% if advice.tacticalPoints is string %}
+                            <p>{{ advice.tacticalPoints }}</p>
+                        {% else %}
+                            {% for key, value in advice.tacticalPoints.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="timing" class="tab-content">
+                    <h3>时段作战计划</h3>
+                    <div class="content-box">
+                        {% if advice.timingPlan is string %}
+                            <p>{{ advice.timingPlan }}</p>
+                        {% else %}
+                            {% for key, value in advice.timingPlan.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="advanced" class="tab-content">
+                    <h3>进阶技巧提醒</h3>
+                    <div class="content-box">
+                        {% if advice.advancedTips is string %}
+                            <p>{{ advice.advancedTips }}</p>
+                        {% else %}
+                            {% for key, value in advice.advancedTips.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="contingency" class="tab-content">
+                    <h3>应急调整预案</h3>
+                    <div class="content-box">
+                        {% if advice.contingencyPlan is string %}
+                            <p>{{ advice.contingencyPlan }}</p>
+                        {% else %}
+                            {% for key, value in advice.contingencyPlan.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="summary" class="tab-content">
+                    <h3>综合总结</h3>
+                    <div class="content-box">
+                        {% if advice.summary is string %}
+                            <p>{{ advice.summary }}</p>
+                        {% else %}
+                            {% for key, value in advice.summary.items() %}
+                                <div class="section">
+                                    <h4>{{ key }}</h4>
+                                    {% if value is string %}
+                                        <p>{{ value }}</p>
+                                    {% else %}
+                                        <p>{{ value|tojson }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>请在左侧填写您的钓鱼环境参数，点击"生成钓鱼建议"按钮获取专业建议</p>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+    var i, tabContent, tabButtons;
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+    tabButtons = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+{% endblock %}
+

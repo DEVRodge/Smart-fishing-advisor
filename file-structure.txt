@@ -1,0 +1,11 @@
+your-project/
+├── app/
+│   └── page.tsx
+├── components/
+│   ├── index.ts
+│   └── fishing-advisor/
+│       └── index.tsx
+├── lib/
+│   └── env.ts
+└── ...other files
+

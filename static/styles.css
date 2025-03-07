@@ -1,0 +1,159 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(to bottom, #e6f3ff, #e6ffed);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #1a5f7a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #1a5f7a;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #134b61;
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.tabs {
+  margin-top: 20px;
+}
+
+.tab-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+.tab-button {
+  flex: 1;
+  min-width: 100px;
+  white-space: nowrap;
+  padding: 8px 12px;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  border-bottom: 2px solid #1a5f7a;
+}
+
+.tab-content {
+  display: none;
+  padding: 15px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-button {
+    min-width: calc(25% - 4px);
+    padding: 8px 4px;
+    font-size: 0.875rem;
+  }
+}
+
+.reasoning-box {
+  background-color: #f0f7ff;
+  border: 1px solid #cce5ff;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  white-space: pre-line;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.content-box {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  white-space: pre-line;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.section {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.section h4 {
+  color: #1a5f7a;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1em;
+}
+
